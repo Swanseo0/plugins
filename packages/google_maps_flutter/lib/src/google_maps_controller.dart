@@ -118,7 +118,9 @@ class GoogleMapsController {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
           NavigationDelegate(onPageFinished: (String url) async {
-        _controller.complete(_webviewController);
+        if (!_controller.isCompleted) {
+          _controller.complete(_webviewController);
+        }
       }))
       ..loadRequest(Uri.parse(scheme + path));
 
@@ -146,17 +148,20 @@ class GoogleMapsController {
         onMessageReceived: _onPolygonClick);
     await (await controller)
         .addJavaScriptChannel('CircleClick', onMessageReceived: _onCircleClick);
+    await (await controller).reload();
+    // for time reloading page
+    await Future<void>.delayed(const Duration(milliseconds: 300));
   }
 
   Future<void> _createMap() async {
     final String options = _createOptions();
     final String command = '''
       map = new google.maps.Map(document.getElementById('map'), $options);
-      map.addListener('bounds_changed', BoundsChanged.postMessage);
-      map.addListener('idle', Idle.postMessage);
+      map.addListener('bounds_changed', () => BoundsChanged.postMessage(''));
+      map.addListener('idle', () => Idle.postMessage(''));
       map.addListener('click', (event) => Click.postMessage(JSON.stringify(event)));
       map.addListener('rightclick', (event) => RightClick.postMessage(JSON.stringify(event)));
-      map.addListener('tilesloaded', Tilesloaded.postMessage);
+      map.addListener('tilesloaded', (map) => Tilesloaded.postMessage(''));
     ''';
     await _addJavaScriptChannels();
     await (await controller).runJavaScript(command);

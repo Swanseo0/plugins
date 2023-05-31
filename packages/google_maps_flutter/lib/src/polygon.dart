@@ -26,9 +26,9 @@ class PolygonController {
   ui.VoidCallback? tapEvent;
 
   Future<void> _addPolygonEvent(Future<WebViewController>? controller) async {
-    final String command =
-        "$_polygon.addListener('click', (event) => PolygonClick.postMessage(JSON.stringify(${_polygon?.id})));";
-    await (await controller!).runJavaScript(command);
+    // final String command =
+    //     "$_polygon.addListener('click', (event) => PolygonClick.postMessage(JSON.stringify(${_polygon?.id})));";
+    // await (await controller!).runJavaScript(command);
   }
 
   /// Returns `true` if this Controller will use its own `onTap` handler to consume events.
