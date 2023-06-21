@@ -21,6 +21,10 @@ namespace {
 
 std::string PermissionToPrivilege(Permission permission) {
   switch (permission) {
+    case Permission::kAudio:
+    case Permission::kStorage:
+    case Permission::kVideos:
+      return "http://tizen.org/privilege/externalstorage";
     case Permission::kCalendar:
       return "http://tizen.org/privilege/calendar.read";
     case Permission::kCamera:
@@ -35,12 +39,12 @@ std::string PermissionToPrivilege(Permission permission) {
       return "http://tizen.org/privilege/recorder";
     case Permission::kPhone:
       return "http://tizen.org/privilege/call";
+    case Permission::kScheduleExactAlarm:
+      return "http://tizen.org/privilege/alarm.get";
     case Permission::kSensors:
       return "http://tizen.org/privilege/healthinfo";
     case Permission::kSMS:
       return "http://tizen.org/privilege/message.read";
-    case Permission::kStorage:
-      return "http://tizen.org/privilege/externalstorage";
     case Permission::kMediaLibrary:
       return "http://tizen.org/privilege/mediastorage";
     default:

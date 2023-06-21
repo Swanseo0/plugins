@@ -1,5 +1,7 @@
-## NEXT
+## 1.2.2
 
+* Update permission_handler to 10.3.0.
+* Update permission_handler_platform_interface to 3.10.0.
 * Increase the minimum Flutter version to 3.3.
 * Replace effective_dart dependency with flutter_lints.
 

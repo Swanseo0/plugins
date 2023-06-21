@@ -20,8 +20,8 @@ You can use this plugin to ask the user for runtime permissions if your app perf
 
    ```yaml
    dependencies:
-     permission_handler: ^8.3.0
-     permission_handler_tizen: ^1.2.1
+     permission_handler: ^10.3.0
+     permission_handler_tizen: ^1.2.2
    ```
 
    Then you can import `permission_handler` in your Dart code:
@@ -36,6 +36,7 @@ You can use this plugin to ask the user for runtime permissions if your app perf
 
 | Permission | Tizen permission | Tizen privileges |
 |-|-|-|
+| `Permission.audio`<br>`Permission.storage`<br>`Permission.videos` | Storage | `http://tizen.org/privilege/externalstorage` |
 | `Permission.calendar` | Calendar | `http://tizen.org/privilege/calendar.read`<br>`http://tizen.org/privilege/calendar.write` |
 | `Permission.camera` | Camera | `http://tizen.org/privilege/camera` |
 | `Permission.contact` | Contacts | `http://tizen.org/privilege/contact.read`<br>`http://tizen.org/privilege/contact.write` |
@@ -43,13 +44,13 @@ You can use this plugin to ask the user for runtime permissions if your app perf
 | `Permission.mediaLibrary` | Storage | `http://tizen.org/privilege/mediastorage` |
 | `Permission.microphone` | Microphone | `http://tizen.org/privilege/recorder` |
 | `Permission.phone` | Call | `http://tizen.org/privilege/call` |
+| `Permission.scheduleExactAlarm` | | `http://tizen.org/privilege/alarm.get`<br>`http://tizen.org/privilege/alarm.set` |
 | `Permission.sensors` | Sensor | `http://tizen.org/privilege/healthinfo` |
 | `Permission.sms` | Message | `http://tizen.org/privilege/message.read`<br>`http://tizen.org/privilege/message.write` |
-| `Permission.storage` | Storage | `http://tizen.org/privilege/externalstorage` |
 
 The following permissions are not applicable for Tizen:
 
-- Android-only: `accessMediaLocation`, `accessNotificationPolicy`, `activityRecognition`, `bluetoothAdvertise`, `bluetoothConnect`, `bluetoothScan`, `manageExternalStorage`, `requestInstallPackages`, `systemAlertWindow`
+- Android-only: `accessMediaLocation`, `accessNotificationPolicy`, `activityRecognition`, `bluetoothAdvertise`, `bluetoothConnect`, `bluetoothScan`, `manageExternalStorage`, `nearbyWifiDevices`, `requestInstallPackages`, `systemAlertWindow`
 - iOS-only: `appTrackingTransparency`, `bluetooth`, `criticalAlerts`, `photos`, `photosAddOnly`, `reminders`, `speech`
 
 On Tizen, your app can use some security-sensitive features (such as bluetooth) without explicitly acquiring permissions. However, you might need to declare relevant privileges in its `tizen-manifest.xml` file. For detailed information on Tizen privileges, see [Tizen Docs: API Privileges](https://docs.tizen.org/application/dotnet/get-started/api-privileges).
