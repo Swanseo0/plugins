@@ -111,10 +111,7 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
         githubURL: 'https://github.com/Baseflow/flutter-geolocator',
         pubDevURL: 'https://pub.dev/packages/geolocator',
         appBarActions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 50),
-            child: _createActions(),
-          ),
+          _createActions()
         ],
         pages: [
           ExamplePage(

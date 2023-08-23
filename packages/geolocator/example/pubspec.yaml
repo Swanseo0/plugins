@@ -11,7 +11,7 @@ dependencies:
   cupertino_icons: ^1.0.1+1
   flutter:
     sdk: flutter
-  geolocator: ^8.0.0
+  geolocator: ^10.0.0
   geolocator_tizen:
     path: ../
   url_launcher_tizen:
