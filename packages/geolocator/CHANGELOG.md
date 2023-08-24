@@ -1,3 +1,9 @@
+## 1.0.7
+
+* Update geolocator to 10.0.0.
+* Update geolocator_platform_interface to 4.0.7.
+* Update example app.
+
 ## 1.0.6
 
 * Remove unnecessary `StreamHandlerError` implementation.
