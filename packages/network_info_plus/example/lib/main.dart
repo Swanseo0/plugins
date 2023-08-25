@@ -8,10 +8,10 @@ import 'dart:async';
 import 'dart:developer' as developer;
 import 'dart:io';
 
-import 'package:network_info_plus/network_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 
 // Sets a platform override for desktop to avoid exceptions. See
 // https://flutter.dev/desktop#target-platform-override for more info.
@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorSchemeSeed: const Color(0x9f4376f8),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -141,13 +142,6 @@ class _MyHomePageState extends State<MyHomePage> {
     } on PlatformException catch (e) {
       developer.log('Failed to get Wifi gateway address', error: e);
       wifiGatewayIP = 'Failed to get Wifi gateway address';
-    }
-
-    try {
-      wifiSubmask = await _networkInfo.getWifiSubmask();
-    } on PlatformException catch (e) {
-      developer.log('Failed to get Wifi submask', error: e);
-      wifiSubmask = 'Failed to get Wifi submask';
     }
 
     setState(() {
